@@ -9,8 +9,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Medtech docketReq"/>
   <Description DefaultValue="Medtech docket request Office Add-in."/>
-  <IconUrl DefaultValue="https://raw.githubusercontent.com/jmai2rad/docketReq/main/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://raw.githubusercontent.com/jmai2rad/docketReq/main/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://jmai2rad.github.io/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://jmai2rad.github.io/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
   <AppDomains>
     <AppDomain>https://www.jnj.com</AppDomain>
@@ -73,9 +73,9 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://raw.githubusercontent.com/jmai2rad/docketReq/main/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://raw.githubusercontent.com/jmai2rad/docketReq/main/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://raw.githubusercontent.com/jmai2rad/docketReq/main/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://jmai2rad.github.io/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://jmai2rad.github.io/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://jmai2rad.github.io/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Taskpane.Url" DefaultValue="https://jmai2rad.github.io/taskpane.html"/>
