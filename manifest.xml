@@ -7,7 +7,7 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Medtech</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Medtech docketReq"/>
+  <DisplayName DefaultValue="docketReq"/>
   <Description DefaultValue="Medtech docket request Office Add-in."/>
   <IconUrl DefaultValue="https://jmai2rad.github.io/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://jmai2rad.github.io/assets/icon-64.png"/>
@@ -81,9 +81,9 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://jmai2rad.github.io/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Medtech docketReq Add-in"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Medtech docketReq"/>
-        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Medtech docketReq"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="docketReq Add-in"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="docketReq"/>
+        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="docketReq"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Medtech docketReq add-in"/>
