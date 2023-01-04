@@ -84,14 +84,17 @@
 
     Office.onReady((info) => {
         $('#bline').change(function(){
+            var opts;
             let bl = $(this).val();
             if (bl === "Digital Solutions") {
                 $("#category").empty();
-                $("#category").options(['C-SATS',
-                                        'Hub Hardware',
-                                        'Hub Software',
-                                        'ML/AI',
-                                        'Smart Instrument']);
+                opts = ['Category',
+                        'C-SATS',
+                        'Hub Hardware',
+                        'Hub Software',
+                        'ML/AI',
+                        'Smart Instrument'];
+                $("#category").options(opts);
             } else if (bl === "Ethicon Instrument") {
                 $("#category").empty();
                 $("#category").append("<option>Instruments - Advanced Energy</option>");
