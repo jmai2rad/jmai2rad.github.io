@@ -83,6 +83,10 @@
 <script>
 
     Office.onReady((info) => {
+        $("#category").dropdown({
+            "clearable": true
+        });
+
         $('#bline').change(function(){
             let bl = $(this).val();
             if (bl === "Digital Solutions") {
