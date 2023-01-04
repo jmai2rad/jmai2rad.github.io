@@ -90,20 +90,20 @@
         $('#bline').change(function(){
             let bl = $(this).val();
             if (bl === "Digital Solutions") {
-                $("#category").dropdown("clear");
-                $("#category").append("<option>C-SATS</option>");
-                $("#category").append("<option>Hub Hardware</option>");
-                $("#category").append("<option>Hub Software</option>");
-                $("#category").append("<option>ML/AI</option>");
-                $("#category").append("<option>Smart Instrument</option>");
+                $("#category").empty();
+                $("#category").options(['C-SATS',
+                                        'Hub Hardware',
+                                        'Hub Software',
+                                        'ML/AI',
+                                        'Smart Instrument']);
             } else if (bl === "Ethicon Instrument") {
-                $("#category").dropdown("clear");
+                $("#category").empty();
                 $("#category").append("<option>Instruments - Advanced Energy</option>");
                 $("#category").append("<option>Instruments - HAT</option>");
                 $("#category").append("<option>Instruments - General</option>");
                 $("#category").append("<option>Instruments - Stapler</option>");
             } else if (bl === "Monarch Robotic System") {
-                $("#category").dropdown("clear");
+                $("#category").empty();
                 $("#category").append("<option>Algorithms/AI</option>");
                 $("#category").append("<option>Hardware Platform</option>");
                 $("#category").append("<option>Instrument & Accessories</option>");
@@ -112,7 +112,7 @@
                 $("#category").append("<option>UI/UX</option>");
                 $("#category").append("<option>Vision & Sensors</option>");
             } else if (bl === "Ottava Robotic System") {
-                $("#category").dropdown("clear");
+                $("#category").empty();
                 $("#category").append("<option>Accessories</option>");
                 $("#category").append("<option>Arm/Tool Driver</option>");
                 $("#category").append("<option>Concomitant</option>");
