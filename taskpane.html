@@ -24,7 +24,7 @@
             <input type="text" id="pezno" name="pezno" required>
         <label class="ui orange label" for="applicant">Select the following:</label>
         <select class="ui dropdown" id="applicant" required>
-            <option value="">Applicant</option>
+            <option selected disabled>Applicant</option>
             <option value="Auris">Auris</option>>
             <option value="Verb">Verb</option>>
             <option value="C-SATS">C-SATS</option>>
@@ -32,13 +32,13 @@
             <option value="Janssen R&D">Janssen R&D</option>>
         </select>
         <select class="ui dropdown" id="type" required>
-            <option value="">Application Type</option>
+            <option selected disabled>Application Type</option>
             <option value="Provisional">Provisional</option>>
             <option value="Non-provisional">Non-provisional</option>>
             <option value="Design">Design</option>>
         </select>
         <select class="ui dropdown" id="attorney" required>
-            <option value="">Attorney</option>
+            <option selected disabled>Attorney</option>
             <option value="Andrew Khouzam">Andrew Khouzam</option>>
             <option value="Chitra Kalyanaraman">Chitra Kalyanaraman</option>>
             <option value="David Wallace">David Wallace</option>>
@@ -48,7 +48,7 @@
             <option value="Venk Krishnamoorthy">Venk Krishnamoorthy</option>>
         </select>
         <select class="ui dropdown" id="oc" required>
-            <option value="">Outside Counsel</option>
+            <option selected disabled>Outside Counsel</option>
             <option value="Morgan Lewis">Morgan Lewis</option>>
             <option value="Chang & Hale">Chang & Hale</option>>
             <option value="Womble Bond">Womble Bond</option>>
@@ -60,21 +60,21 @@
             <option value="Condo Roccia">Condo Roccia</option>>
         </select>
         <select class="ui dropdown" id="bunit" required>
-            <option value="">Business Unit</option>
+            <option selected disabled>Business Unit</option>
             <option value="RAD">RAD</option>>
             <option value="LCI">LCI</option>>
             <option value="DSP">DSP</option>>
             <option value="-">-</option>>
         </select>
         <select class="ui dropdown" id="bline" required>
-            <option value="">Business Line</option>
+            <option selected disabled>Business Line</option>
             <option value="Digital Solutions">Digital Solutions</option>>
             <option value="Ethicon Instrument">Ethicon Instrument</option>>
             <option value="Monarch Robotic System">Monarch Robotic System</option>>
             <option value="Ottava Robotic System">Ottava Robotic System</option>>
         </select>
         <select class="ui dropdown" id="category" required>
-            <option value="">Category</option>
+            <option selected disabled>Category</option>
         </select>
         <button class="ui orange button" id="helloButton" type="submit">Request Docket</button>
     </form>
@@ -132,92 +132,99 @@
     });
 
     function docReq() {
-        Office.context.mailbox.item.to.setAsync(
-            [{
-                "displayName" : "Vicki Foisie", 
-                "emailAddress": "vfoisie@its.jnj.com"
-            },
-            {
-                "displayName" : "Susanna Buenros",
-                "emailAddress": "sbuenros@its.jnj.com"
-            }],
-            function (asyncResult) {
-                if (asyncResult.status == Office.AsyncResultStatus.Failed){
-                    write(asyncResult.error.message);
+        let valid = true;
+        $('[required]').each(function() {
+            if ($(this).is(':invalid') || !$(this).val()) valid = false;
+        })
+        if (!valid) alert("Please fill in all data!");
+        else {
+            Office.context.mailbox.item.to.setAsync(
+                [{
+                    "displayName" : "Vicki Foisie", 
+                    "emailAddress": "vfoisie@its.jnj.com"
+                },
+                {
+                    "displayName" : "Susanna Buenros",
+                    "emailAddress": "sbuenros@its.jnj.com"
+                }],
+                function (asyncResult) {
+                    if (asyncResult.status == Office.AsyncResultStatus.Failed){
+                        write(asyncResult.error.message);
+                    }
                 }
-            }
-        );
+            );
 
-        const today = new Date();
-        let subject = '^_^___Docket__Request__' + today.toLocaleDateString() + '___^_^'
+            const today = new Date();
+            let subject = '^_^___Docket__Request__' + today.toLocaleDateString() + '___^_^'
 
-        Office.context.mailbox.item.subject.setAsync(
-            subject,
-            { asyncContext: { var1: 1, var2: 2 } },
-            function (asyncResult) {
-                if (asyncResult.status == Office.AsyncResultStatus.Failed){
-                    write(asyncResult.error.message);
+            Office.context.mailbox.item.subject.setAsync(
+                subject,
+                { asyncContext: { var1: 1, var2: 2 } },
+                function (asyncResult) {
+                    if (asyncResult.status == Office.AsyncResultStatus.Failed){
+                        write(asyncResult.error.message);
+                    }
                 }
-            }
-        );
+            );
 
-        Office.context.mailbox.item.body.setAsync(
-            "Dear Vicki/Susanna,<br>" +
-            "&emsp;Please help generate a new docket based on the following info:<br>" +
-            "<br>" +
-            '<table class="ui celled table">' +
-            '<tr>' +
-                '<td><b>Title:</b></td>' +
-                '<td>' + $("#title").val() + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Contributor(s):</b></td>' +
-                '<td>' + $("#names").val() + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>PEZ #:</b></td>' +
-                '<td>' + $("#pezno").val() + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Applicant:</b></td>' +
-                '<td>' + $("#applicant").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>App. Type:</b></td>' +
-                '<td>' + $("#type").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Attorney:</b></td>' +
-                '<td>' + $("#attorney").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Outside Counsel:</b></td>' +
-                '<td>' + $("#oc").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Business Unit:</b></td>' +
-                '<td>' + $("#bunit").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Business Line:</b></td>' +
-                '<td>' + $("#bline").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Category:</b></td>' +
-                '<td>' + $("#category").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '</table>' +
-            '<br>' +
-            'Thanks!',
-            { coercionType: 'html' },
+            Office.context.mailbox.item.body.setAsync(
+                "Dear Vicki/Susanna,<br>" +
+                "&emsp;Please help generate a new docket based on the following info:<br>" +
+                "<br>" +
+                '<table class="ui celled table">' +
+                '<tr>' +
+                    '<td><b>Title:</b></td>' +
+                    '<td>' + $("#title").val() + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Contributor(s):</b></td>' +
+                    '<td>' + $("#names").val() + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>PEZ #:</b></td>' +
+                    '<td>' + $("#pezno").val() + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Applicant:</b></td>' +
+                    '<td>' + $("#applicant").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>App. Type:</b></td>' +
+                    '<td>' + $("#type").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Attorney:</b></td>' +
+                    '<td>' + $("#attorney").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Outside Counsel:</b></td>' +
+                    '<td>' + $("#oc").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Business Unit:</b></td>' +
+                    '<td>' + $("#bunit").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Business Line:</b></td>' +
+                    '<td>' + $("#bline").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Category:</b></td>' +
+                    '<td>' + $("#category").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '</table>' +
+                '<br>' +
+                'Thanks!',
+                { coercionType: 'html' },
 
-            // Callback method to check that setAsync succeeded
-            function (asyncResult) {
-                if (asyncResult.status == Office.AsyncResultStatus.Failed) {
-                    write(asyncResult.error.message);
+                // Callback method to check that setAsync succeeded
+                function (asyncResult) {
+                    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+                        write(asyncResult.error.message);
+                    }
                 }
-            }
-        );
+            );
+        }
     }
 
 </script>
