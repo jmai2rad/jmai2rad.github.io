@@ -24,7 +24,7 @@
             <input type="text" id="pezno" name="pezno" required>
         <label class="ui orange label" for="applicant">Select the following:</label>
         <select class="ui dropdown" id="applicant" required>
-            <option value="" disabled>Applicant</option>
+            <option value="">Applicant</option>
             <option value="Auris">Auris</option>>
             <option value="Verb">Verb</option>>
             <option value="C-SATS">C-SATS</option>>
@@ -32,13 +32,13 @@
             <option value="Janssen R&D">Janssen R&D</option>>
         </select>
         <select class="ui dropdown" id="type" required>
-            <option value="" disabled>Application Type</option>
+            <option value="">Application Type</option>
             <option value="Provisional">Provisional</option>>
             <option value="Non-provisional">Non-provisional</option>>
             <option value="Design">Design</option>>
         </select>
         <select class="ui dropdown" id="attorney" required>
-            <option value="" disabled>Attorney</option>
+            <option value="">Attorney</option>
             <option value="Andrew Khouzam">Andrew Khouzam</option>>
             <option value="Chitra Kalyanaraman">Chitra Kalyanaraman</option>>
             <option value="David Wallace">David Wallace</option>>
@@ -48,7 +48,7 @@
             <option value="Venk Krishnamoorthy">Venk Krishnamoorthy</option>>
         </select>
         <select class="ui dropdown" id="oc" required>
-            <option value="" disabled>Outside Counsel</option>
+            <option value="">Outside Counsel</option>
             <option value="Morgan Lewis">Morgan Lewis</option>>
             <option value="Chang & Hale">Chang & Hale</option>>
             <option value="Womble Bond">Womble Bond</option>>
@@ -60,21 +60,21 @@
             <option value="Condo Roccia">Condo Roccia</option>>
         </select>
         <select class="ui dropdown" id="bunit" required>
-            <option value="" disabled>Business Unit</option>
+            <option value="">Business Unit</option>
             <option value="RAD">RAD</option>>
             <option value="LCI">LCI</option>>
             <option value="DSP">DSP</option>>
             <option value="-">-</option>>
         </select>
         <select class="ui dropdown" id="bline" required>
-            <option value="" disabled>Business Line</option>
+            <option value="">Business Line</option>
             <option value="Digital Solutions">Digital Solutions</option>>
             <option value="Ethicon Instrument">Ethicon Instrument</option>>
             <option value="Monarch Robotic System">Monarch Robotic System</option>>
             <option value="Ottava Robotic System">Ottava Robotic System</option>>
         </select>
         <select class="ui dropdown" id="category" required>
-            <option value="" disabled>Category</option>
+            <option value="">Category</option>
         </select>
         <button class="ui orange button" id="helloButton" type="submit">Request Docket</button>
     </form>
@@ -87,7 +87,7 @@
             let bl = $(this).val();
             if (bl === "Digital Solutions") {
                 $("#category").empty();
-                $("#category").append("<option value='' disabled>Category</option>");
+                $("#category").append("<option value=''>Category</option>");
                 $("#category").append("<option>C-SATS</option>");
                 $("#category").append("<option>Hub Hardware</option>");
                 $("#category").append("<option>Hub Software</option>");
@@ -95,14 +95,14 @@
                 $("#category").append("<option>Smart Instrument</option>");
             } else if (bl === "Ethicon Instrument") {
                 $("#category").empty();
-                $("#category").append("<option value='' disabled>Category</option>");
+                $("#category").append("<option value=''>Category</option>");
                 $("#category").append("<option>Instruments - Advanced Energy</option>");
                 $("#category").append("<option>Instruments - HAT</option>");
                 $("#category").append("<option>Instruments - General</option>");
                 $("#category").append("<option>Instruments - Stapler</option>");
             } else if (bl === "Monarch Robotic System") {
                 $("#category").empty();
-                $("#category").append("<option value='' disabled>Category</option>");
+                $("#category").append("<option value=''>Category</option>");
                 $("#category").append("<option>Algorithms/AI</option>");
                 $("#category").append("<option>Hardware Platform</option>");
                 $("#category").append("<option>Instrument & Accessories</option>");
@@ -112,7 +112,7 @@
                 $("#category").append("<option>Vision & Sensors</option>");
             } else if (bl === "Ottava Robotic System") {
                 $("#category").empty();
-                $("#category").append("<option value='' disabled>Category</option>");
+                $("#category").append("<option value=''>Category</option>");
                 $("#category").append("<option>Accessories</option>");
                 $("#category").append("<option>Arm/Tool Driver</option>");
                 $("#category").append("<option>Concomitant</option>");
