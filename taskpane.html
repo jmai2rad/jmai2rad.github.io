@@ -133,9 +133,9 @@
 
     function docReq() {
         let valid = true;
-        $('[required]').each(function() {
-            if ($(this).is(':invalid') || !$(this).val()) valid = false;
-        })
+        // $('[required]').each(function() {
+        //     if ($(this).is(':invalid') || !$(this).val()) valid = false;
+        // })
         if (!valid) alert("Please fill in all data!");
         else {
             Office.context.mailbox.item.to.setAsync(
