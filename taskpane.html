@@ -132,98 +132,99 @@
     });
 
     function docReq() {
-        // let valid = true;
-        // $('[required]').each(function() {
-        //     if ($(this).is(':invalid') || !$(this).val()) valid = false;
-        // })
-        // if (!valid) alert("Please fill in all data!");
-        // else {
-        Office.context.mailbox.item.to.setAsync(
-            [{
-                "displayName" : "Vicki Foisie", 
-                "emailAddress": "vfoisie@its.jnj.com"
-            },
-            {
-                "displayName" : "Susanna Buenros",
-                "emailAddress": "sbuenros@its.jnj.com"
-            }],
-            function (asyncResult) {
-                if (asyncResult.status == Office.AsyncResultStatus.Failed){
-                    write(asyncResult.error.message);
+        let valid = true;
+        $('[required]').each(function() {
+            if ($(this).is(':invalid') || !$(this).val()) valid = false;
+        })
+        if (!valid) alert("Please fill in all data!");
+        else {
+            Office.context.mailbox.item.to.setAsync(
+                [{
+                    "displayName" : "Vicki Foisie", 
+                    "emailAddress": "vfoisie@its.jnj.com"
+                },
+                {
+                    "displayName" : "Susanna Buenros",
+                    "emailAddress": "sbuenros@its.jnj.com"
+                }],
+                function (asyncResult) {
+                    if (asyncResult.status == Office.AsyncResultStatus.Failed){
+                        write(asyncResult.error.message);
+                    }
                 }
-            }
-        );
+            );
 
-        const today = new Date();
-        let subject = '^_^___Docket__Request__' + today.toLocaleDateString() + '___^_^'
+            const today = new Date();
+            let subject = '^_^___Docket__Request__' + today.toLocaleDateString() + '___^_^'
 
-        Office.context.mailbox.item.subject.setAsync(
-            subject,
-            { asyncContext: { var1: 1, var2: 2 } },
-            function (asyncResult) {
-                if (asyncResult.status == Office.AsyncResultStatus.Failed){
-                    write(asyncResult.error.message);
+            Office.context.mailbox.item.subject.setAsync(
+                subject,
+                { asyncContext: { var1: 1, var2: 2 } },
+                function (asyncResult) {
+                    if (asyncResult.status == Office.AsyncResultStatus.Failed){
+                        write(asyncResult.error.message);
+                    }
                 }
-            }
-        );
+            );
 
-        Office.context.mailbox.item.body.setAsync(
-            "Dear Vicki/Susanna,<br>" +
-            "&emsp;Please help generate a new docket based on the following info:<br>" +
-            "<br>" +
-            '<table class="ui celled table">' +
-            '<tr>' +
-                '<td><b>Title:</b></td>' +
-                '<td>' + $("#title").val() + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Contributor(s):</b></td>' +
-                '<td>' + $("#names").val() + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>PEZ #:</b></td>' +
-                '<td>' + $("#pezno").val() + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Applicant:</b></td>' +
-                '<td>' + $("#applicant").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>App. Type:</b></td>' +
-                '<td>' + $("#type").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Attorney:</b></td>' +
-                '<td>' + $("#attorney").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Outside Counsel:</b></td>' +
-                '<td>' + $("#oc").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Business Unit:</b></td>' +
-                '<td>' + $("#bunit").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Business Line:</b></td>' +
-                '<td>' + $("#bline").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '<tr>' +
-                '<td><b>Category:</b></td>' +
-                '<td>' + $("#category").dropdown("get value") + '</td>' +
-            '</tr>' +
-            '</table>' +
-            '<br>' +
-            'Thanks!',
-            { coercionType: 'html' },
+            Office.context.mailbox.item.body.setAsync(
+                "Dear Vicki/Susanna,<br>" +
+                "&emsp;Please help generate a new docket based on the following info:<br>" +
+                "<br>" +
+                '<table class="ui celled table">' +
+                '<tr>' +
+                    '<td><b>Title:</b></td>' +
+                    '<td>' + $("#title").val() + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Contributor(s):</b></td>' +
+                    '<td>' + $("#names").val() + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>PEZ #:</b></td>' +
+                    '<td>' + $("#pezno").val() + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Applicant:</b></td>' +
+                    '<td>' + $("#applicant").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>App. Type:</b></td>' +
+                    '<td>' + $("#type").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Attorney:</b></td>' +
+                    '<td>' + $("#attorney").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Outside Counsel:</b></td>' +
+                    '<td>' + $("#oc").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Business Unit:</b></td>' +
+                    '<td>' + $("#bunit").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Business Line:</b></td>' +
+                    '<td>' + $("#bline").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                    '<td><b>Category:</b></td>' +
+                    '<td>' + $("#category").dropdown("get value") + '</td>' +
+                '</tr>' +
+                '</table>' +
+                '<br>' +
+                'Thanks!',
+                { coercionType: 'html' },
 
-            // Callback method to check that setAsync succeeded
-            function (asyncResult) {
-                if (asyncResult.status == Office.AsyncResultStatus.Failed) {
-                    write(asyncResult.error.message);
+                // Callback method to check that setAsync succeeded
+                function (asyncResult) {
+                    if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+                        write(asyncResult.error.message);
+                    }
                 }
-            }
-        );
+            );
+        }
     }
 
 </script>
